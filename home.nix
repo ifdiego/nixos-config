@@ -28,7 +28,6 @@
     gopls
     goreleaser
     gtypist
-    helix
     hugo
     hyperfine
     jq
@@ -40,7 +39,6 @@
     nodejs_22
     nushell
     python3Full
-    rio
     ripgrep
     rust-analyzer
     rustc
@@ -51,7 +49,6 @@
     xclip
     yazi
     zed-editor
-    zellij
     zig
     zls
   ];
@@ -105,6 +102,27 @@
       core.editor = "nvim";
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
+    };
+  };
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      editor = {
+        line-number = "relative";
+        end-of-line-diagnostics = "hint";
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+        file-picker = {
+          hidden = false;
+        };
+        inline-diagnostics = {
+          cursor-line = "error";
+        };
+      };
     };
   };
 
@@ -351,6 +369,10 @@
     extraConfig = ''
       set -ga terminal-overrides ",xterm-256color:Tc"
     '';
+  };
+
+  programs.zellij = {
+    enable = true;
   };
 
   programs.zoxide = {
